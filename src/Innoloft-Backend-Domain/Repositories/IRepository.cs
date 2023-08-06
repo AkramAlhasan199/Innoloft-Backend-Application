@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 namespace Innoloft_Backend_Domain.Repositories
 {
     public interface IRepository<TEntity> : IRepository<TEntity, string>
-         //where TEntity : IHasKey<string>
     {
     }
 
     public interface IRepository<TEntity, TKey>
-        //where TEntity : IHasKey<TKey>
         where TKey : IEquatable<TKey>
     {
+        IUnitOfWork UnitOfWork { get; }
 
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> spec);
 
         Task<TResult> GetAsync<TResult>(Expression<Func<TEntity, bool>> spec,
+            Expression<Func<TEntity, TResult>> selector);
+
+        Task<List<TResult>> GetListAsync<TResult>(Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector);
 
         Task AddAsync(TEntity entity);

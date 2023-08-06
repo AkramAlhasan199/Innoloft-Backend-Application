@@ -14,7 +14,7 @@ namespace Innoloft_Backend_Persistence.Repositories
     public class Repository<TEntity> : Repository<TEntity, string>
        where TEntity : Entity<string>
     {
-        public Repository(AppDbContext dbContext) : base(dbContext)
+        public Repository(AppDbContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork)
         {
         }
     }
@@ -25,9 +25,12 @@ namespace Innoloft_Backend_Persistence.Repositories
     {
         protected readonly AppDbContext DbContext;
 
-        public Repository(AppDbContext dbContext)
+        public IUnitOfWork UnitOfWork { get; }
+
+        public Repository(AppDbContext dbContext, IUnitOfWork unitOfWork)
         {
             DbContext = dbContext;
+            UnitOfWork = unitOfWork;
         }
 
         public virtual async Task AddAsync(TEntity entity)

@@ -23,7 +23,6 @@ namespace Innoloft_Backend_Domain.Entities
 
         public virtual DateTimeOffset UpdatedOn { get; set; }
 
-        public string ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
     }
 
 }

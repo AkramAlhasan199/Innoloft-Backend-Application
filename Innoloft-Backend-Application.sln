@@ -5,8 +5,6 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innoloft-Backend-Api", "src\Innoloft-Backend-Api\Innoloft-Backend-Api.csproj", "{79470647-653C-4DC2-8107-229C86BC0149}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innoloft-Backend-Application", "src\Innoloft-Backend-Application\Innoloft-Backend-Application.csproj", "{91ADC844-A04E-4994-BC10-F89A617872C1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innoloft-Backend-Domain", "src\Innoloft-Backend-Domain\Innoloft-Backend-Domain.csproj", "{D98B2B30-C4F9-4E0E-8BEA-9ED0DDADBE44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innoloft-Backend-Persistence", "src\Innoloft-Backend-Persistence\Innoloft-Backend-Persistence.csproj", "{24B2FB0A-8CDE-45FA-B678-2F4A2C66D9CA}"
@@ -21,10 +19,6 @@ Global
 		{79470647-653C-4DC2-8107-229C86BC0149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79470647-653C-4DC2-8107-229C86BC0149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79470647-653C-4DC2-8107-229C86BC0149}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91ADC844-A04E-4994-BC10-F89A617872C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91ADC844-A04E-4994-BC10-F89A617872C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91ADC844-A04E-4994-BC10-F89A617872C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91ADC844-A04E-4994-BC10-F89A617872C1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D98B2B30-C4F9-4E0E-8BEA-9ED0DDADBE44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D98B2B30-C4F9-4E0E-8BEA-9ED0DDADBE44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D98B2B30-C4F9-4E0E-8BEA-9ED0DDADBE44}.Release|Any CPU.ActiveCfg = Release|Any CPU
