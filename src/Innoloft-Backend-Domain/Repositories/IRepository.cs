@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Innoloft_Backend_Domain.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -21,7 +22,7 @@ namespace Innoloft_Backend_Domain.Repositories
         Task<TResult> GetAsync<TResult>(Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector);
 
-        Task<List<TResult>> GetListAsync<TResult>(Expression<Func<TEntity, bool>> spec,
+        Task<PagedList<TResult>> GetListAsync<TResult>(DataSourceRequest pageRequest, Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector);
 
         Task AddAsync(TEntity entity);

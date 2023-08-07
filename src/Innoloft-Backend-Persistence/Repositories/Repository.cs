@@ -1,7 +1,10 @@
 ﻿using Innoloft_Backend_Domain.Entities;
 using Innoloft_Backend_Domain.Repositories;
+using Innoloft_Backend_Domain.Utils;
 using Innoloft_Backend_Persistence.Contexts;
+using Innoloft_Backend_Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,11 +67,17 @@ namespace Innoloft_Backend_Persistence.Repositories
             return result;
         }
 
-        public virtual async Task<List<TResult>> GetListAsync<TResult>(Expression<Func<TEntity, bool>> spec,
+        public virtual async Task<PagedList<TResult>> GetListAsync<TResult>(DataSourceRequest pageRequest, Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector)
         {
-            var result = await DbContext.Set<TEntity>().Where(spec).Select(selector).ToListAsync();
-            return result;
+            var totalCount = DbContext.Set<TEntity>().Where(spec).Count();
+
+            var result = await DbContext.Set<TEntity>().Where(spec).Select(selector)
+                .Skip(pageRequest.PageSize * pageRequest.Page)
+                .Take(pageRequest.PageSize)
+                .ToListAsync();
+
+            return result.ToPagedList(totalCount, pageRequest.Page, pageRequest.PageSize);
         }
 
     }

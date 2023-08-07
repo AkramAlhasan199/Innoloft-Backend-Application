@@ -1,5 +1,6 @@
 ﻿using Innoloft_Backend_Domain.Entities;
 using Innoloft_Backend_Domain.Repositories;
+using Innoloft_Backend_Domain.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,13 +72,13 @@ namespace Innoloft_Backend_Domain.Services
                 : GResult<TResult>.Failed("Not Found");
         }
 
-        public virtual async Task<GResult<List<TResult>>> ReadListAsync<TResult>(Expression<Func<TEntity, bool>> spec,
+        public virtual async Task<GResult<PagedList<TResult>>> ReadListAsync<TResult>(DataSourceRequest pageRequest, Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector)
         {
-            var result = await Repository.GetListAsync(spec, selector);
+            var result = await Repository.GetListAsync(pageRequest, spec, selector);
             return result != null
-                ? GResult<List<TResult>>.Success(result)
-                : GResult<List<TResult>>.Failed("Not Found");
+                ? GResult<PagedList<TResult>>.Success(result)
+                : GResult<PagedList<TResult>>.Failed("Not Found");
         }
 
         public virtual async Task<GResult<TEntity>> UpdateAsync(TEntity entity)

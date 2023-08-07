@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Innoloft_Backend_Domain.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -27,7 +28,7 @@ namespace Innoloft_Backend_Domain.Services
         Task<GResult<TResult>> ReadAsync<TResult>(Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector);
 
-        Task<GResult<List<TResult>>> ReadListAsync<TResult>(Expression<Func<TEntity, bool>> spec,
+        Task<GResult<PagedList<TResult>>> ReadListAsync<TResult>(DataSourceRequest pageRequest, Expression<Func<TEntity, bool>> spec,
             Expression<Func<TEntity, TResult>> selector);
     }
 }

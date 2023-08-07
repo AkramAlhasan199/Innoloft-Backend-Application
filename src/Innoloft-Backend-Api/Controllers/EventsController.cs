@@ -4,9 +4,11 @@ using Innoloft_Backend_Application.DataTransferObjects.Users;
 using Innoloft_Backend_Domain.Entities;
 using Innoloft_Backend_Domain.Services.Events;
 using Innoloft_Backend_Domain.Services.Users;
+using Innoloft_Backend_Domain.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Security.Claims;
 using System.Text;
 
@@ -14,7 +16,7 @@ namespace Innoloft_Backend_Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class EventsController : ControllerBase
     {
         private readonly IEventService _eventService;
@@ -29,11 +31,11 @@ namespace Innoloft_Backend_Application.Controllers
 
         [HttpGet]
         [Route("ListUserEvents")]
-        public async Task<IActionResult> ListUserEvents()
+        public async Task<IActionResult> ListUserEvents([FromRoute] DataSourceRequest pageRequest)
         {
             var userId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var result = await _eventService.ReadListAsync(e => e.CreatedById == userId, e => new EventDto
+            var result = await _eventService.ReadListAsync(pageRequest,e => e.CreatedById == userId, e => new EventDto
             {
                 Id = e.Id,
                 Title = e.Title,
@@ -43,12 +45,13 @@ namespace Innoloft_Backend_Application.Controllers
                 UpdatedOn = e.UpdatedOn
             });
 
-            if(!result.Succeeded)
+            if (!result.Succeeded)
             {
                 return BadRequest(result.ErrorOutcome);
             }
 
-            return Ok(result.Outcome);
+            Response?.Headers.Add("X-Pagination", JsonConvert.SerializeObject(result.Outcome.Metadata));
+            return Ok(result);
         }
 
         [HttpGet]
