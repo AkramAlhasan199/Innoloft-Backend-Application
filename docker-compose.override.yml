@@ -1,0 +1,32 @@
+version: '3.4'
+
+volumes:
+  mysqldb:
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: Innoloft-App
+      MYSQL_USER: root
+      MYSQL_PASSWORD: red!@#$%
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - mysqldb:/var/lib/mysql
+    restart: always
+
+  innoloft-backend-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    depends_on:
+      - db
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

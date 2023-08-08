@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  innoloft-backend-api:
+    image: ${DOCKER_REGISTRY-}innoloftbackendapi
+    build:
+      context: .
+      dockerfile: src/Innoloft-Backend-Api/Dockerfile
