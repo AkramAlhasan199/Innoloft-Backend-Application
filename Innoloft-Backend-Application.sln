@@ -5,9 +5,13 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innoloft-Backend-Api", "src\Innoloft-Backend-Api\Innoloft-Backend-Api.csproj", "{79470647-653C-4DC2-8107-229C86BC0149}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innoloft-Backend-Domain", "src\Innoloft-Backend-Domain\Innoloft-Backend-Domain.csproj", "{D98B2B30-C4F9-4E0E-8BEA-9ED0DDADBE44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innoloft-Backend-Domain", "src\Innoloft-Backend-Domain\Innoloft-Backend-Domain.csproj", "{D98B2B30-C4F9-4E0E-8BEA-9ED0DDADBE44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innoloft-Backend-Persistence", "src\Innoloft-Backend-Persistence\Innoloft-Backend-Persistence.csproj", "{24B2FB0A-8CDE-45FA-B678-2F4A2C66D9CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Innoloft-Backend-Persistence", "src\Innoloft-Backend-Persistence\Innoloft-Backend-Persistence.csproj", "{24B2FB0A-8CDE-45FA-B678-2F4A2C66D9CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2B799173-5DCE-4A73-BDE5-F4E4EF39EFC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Innoloft.UnitTest", "Innoloft.UnitTest\Innoloft.UnitTest.csproj", "{1B6EDBDF-A2C3-4F20-A3B6-1D86E82D17EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{24B2FB0A-8CDE-45FA-B678-2F4A2C66D9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24B2FB0A-8CDE-45FA-B678-2F4A2C66D9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24B2FB0A-8CDE-45FA-B678-2F4A2C66D9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B6EDBDF-A2C3-4F20-A3B6-1D86E82D17EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B6EDBDF-A2C3-4F20-A3B6-1D86E82D17EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B6EDBDF-A2C3-4F20-A3B6-1D86E82D17EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B6EDBDF-A2C3-4F20-A3B6-1D86E82D17EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B6EDBDF-A2C3-4F20-A3B6-1D86E82D17EE} = {2B799173-5DCE-4A73-BDE5-F4E4EF39EFC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33947296-A294-4A35-9331-EB0FA968DE76}

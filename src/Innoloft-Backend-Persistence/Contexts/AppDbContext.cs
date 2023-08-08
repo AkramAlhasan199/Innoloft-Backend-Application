@@ -11,7 +11,7 @@ namespace Innoloft_Backend_Persistence.Contexts
 {
     public class AppDbContext : DbContext
     {
-        protected AppDbContext()
+        public AppDbContext()
         {
         }
 
